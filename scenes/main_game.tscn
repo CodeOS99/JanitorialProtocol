@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://nv6dpf3umyp3"]
+[gd_scene load_steps=8 format=3 uid="uid://nv6dpf3umyp3"]
 
 [ext_resource type="PackedScene" uid="uid://ce70gywp78csq" path="res://scenes/player.tscn" id="1_p4v0k"]
+[ext_resource type="PackedScene" uid="uid://cbs5ttjreilsy" path="res://assets/city/source/citta01.fbx" id="2_wpfmg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek1v0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,10 +16,10 @@ sky = SubResource("Sky_5v1fp")
 tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_gh65w"]
-size = Vector3(75, 0.295, 75)
+size = Vector3(293.44, 1.17, 170)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a8g32"]
-points = PackedVector3Array(-37.5, -0.1475, -37.5, -37.5, 0.1475, -37.5, 37.5, -0.1475, -37.5, -37.5, -0.1475, 37.5, -37.5, 0.1475, 37.5, 37.5, 0.1475, -37.5, 37.5, -0.1475, 37.5, 37.5, 0.1475, 37.5)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6t3to"]
+points = PackedVector3Array(-146.72, -0.585, -85, -146.72, 0.585, -85, 146.72, -0.585, -85, -146.72, -0.585, 85, -146.72, 0.585, 85, 146.72, 0.585, -85, 146.72, -0.585, 85, 146.72, 0.585, 85)
 
 [node name="MainGame" type="Node3D"]
 
@@ -35,7 +36,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 12)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -0.621582, -38)
+visible = false
 mesh = SubResource("BoxMesh_gh65w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_a8g32")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -0.621582, -38)
+shape = SubResource("ConvexPolygonShape3D_6t3to")
+
+[node name="citta01" parent="." instance=ExtResource("2_wpfmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.668945, -4.44678, 5.27018)
+
+[node name="citta02" parent="." instance=ExtResource("2_wpfmg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127.331, -4.44678, 5.27018)
+
+[node name="citta03" parent="." instance=ExtResource("2_wpfmg")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 127.331, -4.44678, -79.7298)
+
+[node name="citta04" parent="." instance=ExtResource("2_wpfmg")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.668945, -4.44678, -79.7298)
