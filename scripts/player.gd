@@ -17,6 +17,8 @@ const FOV_CHANGE = 1.5
 
 var gravity = 9.8
 
+var last_hovered_body = null
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var raycast = $Head/Camera3D/RayCast3D
@@ -64,10 +66,21 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	var collided := false
 	if raycast.is_colliding():
 		var body = raycast.get_collider()
 		if body.is_in_group("trash"):
-			body.hovered_over()
+			last_hovered_body = body
+			collided = true
+			if last_hovered_body:
+				last_hovered_body.hovered_exit()
+	
+	if collided:
+		last_hovered_body.hovered_over()
+	else:
+		if last_hovered_body:
+			last_hovered_body.hovered_exit()
+			last_hovered_body = null
 
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
