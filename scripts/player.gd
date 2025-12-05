@@ -19,6 +19,7 @@ var gravity = 9.8
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var raycast = $Head/Camera3D/RayCast3D
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -62,6 +63,11 @@ func _physics_process(delta: float) -> void:
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
+	
+	if raycast.is_colliding():
+		var body = raycast.get_collider()
+		if body.is_in_group("trash"):
+			body.hovered_over()
 
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO

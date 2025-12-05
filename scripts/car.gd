@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-@export var speed: float = 10.0
+@export var speed: float = 20.0
 @export var path_points: Array[Node3D]
 var current_target_index: int = 0
 
