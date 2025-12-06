@@ -32,6 +32,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 
+func _process(delta: float) -> void:
+	$CanvasLayer/Control/Crosshair.modulate = Color(1, 1*(int)(last_hovered_body == null), 1, 1)
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity* delta
