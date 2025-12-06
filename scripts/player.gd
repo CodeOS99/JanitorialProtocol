@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 	if raycast.is_colliding():
 		var body = raycast.get_collider()
 		if body:
-			if body.is_in_group("trash"):
+			if body.is_in_group("trash") or body.is_in_group("bin"):
 				if last_hovered_body:
 					last_hovered_body.hovered_exit()
 				last_hovered_body = body
@@ -90,7 +90,6 @@ func _physics_process(delta: float) -> void:
 		last_hovered_body.hovered_over() # returns if can hover
 	else:
 		if last_hovered_body:
-			print('hrrhrrhrrhee')
 			last_hovered_body.hovered_exit()
 			last_hovered_body = null
 

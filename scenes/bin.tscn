@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://uh5pjfuye5dl"]
+
+[ext_resource type="PackedScene" uid="uid://b35i16i7wfb7t" path="res://assets/bin/bin.blend" id="1_vxu2j"]
+[ext_resource type="Script" path="res://scripts/bin.gd" id="2_7bt1p"]
+[ext_resource type="Script" path="res://scripts/bin_collider_script.gd" id="2_f03f6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2bjuu"]
+radius = 1.47564
+
+[node name="bin" type="Node3D"]
+
+[node name="BinCollider" type="Area3D" parent="." groups=["bin"]]
+script = ExtResource("2_f03f6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BinCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.666412, 0)
+shape = SubResource("SphereShape3D_2bjuu")
+
+[node name="mesh" parent="." instance=ExtResource("1_vxu2j")]
+transform = Transform3D(1.68, 0, 0, 0, 1.68, 0, 0, 0, 1.68, 0, 0, 0)
+script = ExtResource("2_7bt1p")
+
+[node name="InteractLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69279, 0)
+visible = false
+billboard = 1
+text = "E to sell garbage"
+
+[editable path="mesh"]

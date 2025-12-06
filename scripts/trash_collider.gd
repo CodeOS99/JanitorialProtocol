@@ -19,5 +19,7 @@ func hovered_exit():
 	$"../mesh".hovered_exit()
 
 func interact():
+	if Globals.curr_volume + volume > Globals.max_volume:
+		return
 	Globals.player.add_trash(value, volume)
 	$"..".queue_free()

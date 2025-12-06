@@ -9,13 +9,10 @@ extends Node3D
 
 var start_position: Vector3
 var time_passed: float = 0.0
-var original_material: Material
 var is_hovered: bool = false
 
 func _ready() -> void:
 	start_position = self.global_position
-	
-	original_material = mesh_instance.get_surface_override_material(0)
 
 func _process(delta: float) -> void:
 	time_passed += delta
