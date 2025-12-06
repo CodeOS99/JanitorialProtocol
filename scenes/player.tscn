@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce70gywp78csq"]
+[gd_scene load_steps=9 format=3 uid="uid://ce70gywp78csq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1p21k"]
 [ext_resource type="Texture2D" uid="uid://dyt0drlppf04t" path="res://assets/crosshair032.png" id="2_2wudv"]
 [ext_resource type="PackedScene" uid="uid://brdy61yxscp6" path="res://assets/garbage_bag/garbage_bag.blend" id="2_c2ysd"]
 [ext_resource type="Script" path="res://scripts/volume_progressbar.gd" id="4_3d40p"]
+[ext_resource type="Script" path="res://scripts/money_label.gd" id="5_8ewvs"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0jc65"]
 height = 3.0
@@ -92,3 +93,15 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 14
 text = "Space used:"
 vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 71.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Money: 0"
+script = ExtResource("5_8ewvs")

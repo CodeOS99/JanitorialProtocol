@@ -10,4 +10,6 @@ func hovered_exit():
 	$"../mesh".hovered_exit()
 
 func interact():
-	pass
+	Globals.money += Globals.curr_value
+	Globals.curr_value = 0
+	Globals.curr_volume = 0
