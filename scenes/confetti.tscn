@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6o6brc7ux6vd"]
+
+[ext_resource type="Script" path="res://scripts/confetti.gd" id="1_iuqb1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3fl5"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ea3pg"]
+direction = Vector3(-1, 0, 0)
+spread = 41.618
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, -15, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uaepd"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ke5t"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urqcj"]
+albedo_color = Color(0, 1, 1, 1)
+
+[node name="confetti" type="Node3D"]
+script = ExtResource("1_iuqb1")
+
+[node name="Red" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_f3fl5")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ea3pg")
+draw_pass_1 = SubResource("BoxMesh_uaepd")
+
+[node name="Green" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1ke5t")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ea3pg")
+draw_pass_1 = SubResource("BoxMesh_uaepd")
+
+[node name="Blue" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_urqcj")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ea3pg")
+draw_pass_1 = SubResource("BoxMesh_uaepd")
+
+[connection signal="finished" from="Blue" to="." method="_on_blue_finished"]

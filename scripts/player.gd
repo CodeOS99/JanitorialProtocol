@@ -90,7 +90,8 @@ func _physics_process(delta: float) -> void:
 		last_hovered_body.hovered_over() # returns if can hover
 	else:
 		if last_hovered_body:
-			last_hovered_body.hovered_exit()
+			if is_instance_valid(last_hovered_body):
+				last_hovered_body.hovered_exit()
 			last_hovered_body = null
 
 func _headbob(time) -> Vector3:

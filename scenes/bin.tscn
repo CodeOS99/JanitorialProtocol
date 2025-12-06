@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://uh5pjfuye5dl"]
+[gd_scene load_steps=6 format=3 uid="uid://uh5pjfuye5dl"]
 
+[ext_resource type="PackedScene" uid="uid://c6o6brc7ux6vd" path="res://scenes/confetti.tscn" id="1_gkxcg"]
 [ext_resource type="PackedScene" uid="uid://b35i16i7wfb7t" path="res://assets/bin/bin.blend" id="1_vxu2j"]
 [ext_resource type="Script" path="res://scripts/bin.gd" id="2_7bt1p"]
 [ext_resource type="Script" path="res://scripts/bin_collider_script.gd" id="2_f03f6"]
@@ -8,6 +9,9 @@
 radius = 1.47564
 
 [node name="bin" type="Node3D"]
+
+[node name="confetti" parent="." instance=ExtResource("1_gkxcg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65479, 0)
 
 [node name="BinCollider" type="Area3D" parent="." groups=["bin"]]
 script = ExtResource("2_f03f6")
