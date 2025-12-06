@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 var speed
 const WALK_SPEED = 5.0
@@ -25,6 +25,7 @@ var last_hovered_body = null
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Globals.player = self
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -34,6 +35,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	$CanvasLayer/Control/Crosshair.modulate = Color(1, 1*(int)(last_hovered_body == null), 1, 1)
+	
+	if last_hovered_body != null:
+		# pressed
+		if Input.is_action_pressed("interact"):
+			last_hovered_body.interact()
+			last_hovered_body = null
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -72,16 +79,18 @@ func _physics_process(delta: float) -> void:
 	var collided := false
 	if raycast.is_colliding():
 		var body = raycast.get_collider()
-		if body.is_in_group("trash"):
-			last_hovered_body = body
-			collided = true
-			if last_hovered_body:
-				last_hovered_body.hovered_exit()
+		if body:
+			if body.is_in_group("trash"):
+				if last_hovered_body:
+					last_hovered_body.hovered_exit()
+				last_hovered_body = body
+				collided = true
 	
 	if collided:
-		last_hovered_body.hovered_over()
+		last_hovered_body.hovered_over() # returns if can hover
 	else:
 		if last_hovered_body:
+			print('hrrhrrhrrhee')
 			last_hovered_body.hovered_exit()
 			last_hovered_body = null
 
@@ -90,3 +99,7 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func add_trash(value: int, volume: int):
+	Globals.curr_value += value
+	Globals.curr_volume += volume

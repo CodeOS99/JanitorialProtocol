@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce70gywp78csq"]
+[gd_scene load_steps=8 format=3 uid="uid://ce70gywp78csq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1p21k"]
 [ext_resource type="Texture2D" uid="uid://dyt0drlppf04t" path="res://assets/crosshair032.png" id="2_2wudv"]
+[ext_resource type="PackedScene" uid="uid://brdy61yxscp6" path="res://assets/garbage_bag/garbage_bag.blend" id="2_c2ysd"]
+[ext_resource type="Script" path="res://scripts/volume_progressbar.gd" id="4_3d40p"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0jc65"]
 height = 3.0
@@ -23,6 +25,9 @@ shape = SubResource("CapsuleShape3D_0fgxm")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902018, 0)
+
+[node name="garbage_bag" parent="Head" instance=ExtResource("2_c2ysd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973, -0.757, -1.125)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
@@ -62,3 +67,28 @@ grow_vertical = 2
 scale = Vector2(0.335, 0.335)
 mouse_filter = 2
 texture = ExtResource("2_2wudv")
+
+[node name="VolumeProgressbar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -27.0
+offset_right = 101.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_3d40p")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VolumeProgressbar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Space used:"
+vertical_alignment = 1
