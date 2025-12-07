@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd60724ktrxmg"]
+[gd_scene load_steps=6 format=3 uid="uid://dd60724ktrxmg"]
 
 [ext_resource type="Script" path="res://scripts/follow_enemy.gd" id="1_rf3r8"]
 [ext_resource type="PackedScene" uid="uid://b4703vet31mkh" path="res://assets/enemies/bin_enemy.blend" id="2_mhek3"]
@@ -113,9 +113,6 @@ _data = {
 "walk": SubResource("Animation_2uxwe")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ci38r"]
-radius = 0.371973
-
 [node name="bin_enemy" type="CharacterBody3D"]
 script = ExtResource("1_rf3r8")
 
@@ -137,8 +134,10 @@ transform = Transform3D(0.22, 0, 0, 0, 0.0710969, 0.3589, 0, -0.907218, 0.028126
 libraries = {
 "": SubResource("AnimationLibrary_008uq")
 }
+autoplay = "walk"
+speed_scale = 2.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_ci38r")
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
 
 [editable path="bin_enemy"]
