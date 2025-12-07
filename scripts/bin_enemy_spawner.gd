@@ -2,7 +2,7 @@ extends Node3D
 
 @export var enemy = preload("res://scenes/bin_enemy.tscn")
 @export var spawn_radius = 10.0
-@export var spawn_interval = 5.0
+@export var spawn_interval = 10.0
 
 func _ready() -> void:
 	var timer = Timer.new()

@@ -131,13 +131,14 @@ func take_damage(damage: int, take_kb: bool = false, pos: Vector3 = Vector3.ZERO
 	self.health -= damage
 	if take_kb:
 		kb_vel += (global_position-pos) * KB_MAG
-	if health <= 0
+	if health <= 0:
+		get_tree().change_scene_to_file("res://scenes/end.tscn")
+		return
 	$Head/Camera3D._camera_shake()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "use_broom":
 		is_attacking = false
-
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("enemy"):

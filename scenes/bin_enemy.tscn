@@ -531,6 +531,7 @@ height = 1.76759
 
 [node name="bin_enemy" type="CharacterBody3D"]
 script = ExtResource("1_rf3r8")
+fade_duration = null
 
 [node name="bin_enemy" parent="." instance=ExtResource("2_mhek3")]
 

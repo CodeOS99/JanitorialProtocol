@@ -100,18 +100,14 @@ func _die():
 	kb_vel = Vector3.ZERO
 	navigation_agent_3d.target_position = global_position # stop moving
 
-	# Disable collision / area to prevent hitting player
 	if has_node("Area3D"):
 		$Area3D.monitoring = false
 
 func _handle_death(delta: float):
 	_fade_timer += delta
 	var alpha = clamp(1.0 - _fade_timer / fade_duration, 0.0, 1.0)
-
-	# Fade all MeshInstance3D children recursively
 	_fade_meshes(self, alpha)
 
-	# Fade HealthLabel
 	if health_label:
 		var color = health_label.modulate
 		color.a = alpha
