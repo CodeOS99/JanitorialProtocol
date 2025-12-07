@@ -1,0 +1,144 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd60724ktrxmg"]
+
+[ext_resource type="Script" path="res://scripts/follow_enemy.gd" id="1_rf3r8"]
+[ext_resource type="PackedScene" uid="uid://b4703vet31mkh" path="res://assets/enemies/bin_enemy.blend" id="2_mhek3"]
+
+[sub_resource type="Animation" id="Animation_2uxwe"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bin_enemy/LegLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.01172, 2),
+"transitions": PackedFloat32Array(1, -0.5, 1),
+"update": 0,
+"values": [Vector3(0.08, -0.356532, -0.144427), Vector3(0.08, -0.356532, 0.111388), Vector3(0.08, -0.356532, -0.144427)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bin_enemy/LegLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.01172, 2),
+"transitions": PackedFloat32Array(1, -0.5, 1),
+"update": 0,
+"values": [Vector3(0.785398, 0, 0), Vector3(-0.785398, 0, 0), Vector3(0.785398, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bin_enemy/LegRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.01172, 2),
+"transitions": PackedFloat32Array(1, -0.5, 1),
+"update": 0,
+"values": [Vector3(-0.142868, -0.356532, 0.08568), Vector3(-0.142868, -0.356532, -0.0969407), Vector3(-0.142868, -0.356532, 0.08568)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bin_enemy/LegRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.01172, 2),
+"transitions": PackedFloat32Array(1, -0.5, 1),
+"update": 0,
+"values": [Vector3(-0.785398, 0, 0), Vector3(0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8nom5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bin_enemy/LegLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.08, -0.356532, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bin_enemy/LegLeft:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bin_enemy/LegRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.142868, -0.356532, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bin_enemy/LegRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_008uq"]
+_data = {
+"RESET": SubResource("Animation_8nom5"),
+"walk": SubResource("Animation_2uxwe")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ci38r"]
+radius = 0.371973
+
+[node name="bin_enemy" type="CharacterBody3D"]
+script = ExtResource("1_rf3r8")
+
+[node name="bin_enemy" parent="." instance=ExtResource("2_mhek3")]
+
+[node name="LegLeft" parent="bin_enemy" index="2"]
+transform = Transform3D(0.1, 0, 0, 0, 0.367, 0, 0, 0, 0.117, 0.08, -0.356532, 0)
+
+[node name="LegRight" parent="bin_enemy" index="3"]
+transform = Transform3D(0.1, 0, 0, 0, 0.367, 0, 0, 0, 0.117, -0.142868, -0.356532, 0)
+
+[node name="Cube" parent="bin_enemy" index="8"]
+transform = Transform3D(0.22, 0, 0, 0, -0.0551261, 0.359339, 0, -0.908329, -0.0218081, -0.46, 0.36, 0.22473)
+
+[node name="Cube_001" parent="bin_enemy" index="9"]
+transform = Transform3D(0.22, 0, 0, 0, 0.0710969, 0.3589, 0, -0.907218, 0.0281263, 0.422144, 0.36, 0.171926)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_008uq")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ci38r")
+
+[editable path="bin_enemy"]

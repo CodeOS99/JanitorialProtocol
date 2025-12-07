@@ -1,4 +1,4 @@
-[gd_scene load_steps=234 format=4 uid="uid://nv6dpf3umyp3"]
+[gd_scene load_steps=235 format=4 uid="uid://nv6dpf3umyp3"]
 
 [ext_resource type="PackedScene" uid="uid://ce70gywp78csq" path="res://scenes/player.tscn" id="1_p4v0k"]
 [ext_resource type="Texture2D" uid="uid://cvkbbbe2sjc8h" path="res://assets/city/textures/lowpoly_tex-2.png" id="2_uv31s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/trash.gd" id="6_1uso4"]
 [ext_resource type="PackedScene" uid="uid://861nisn2rvcf" path="res://scenes/trash_collected_particle.tscn" id="6_j33o1"]
 [ext_resource type="PackedScene" uid="uid://uh5pjfuye5dl" path="res://scenes/bin.tscn" id="8_eh5i4"]
+[ext_resource type="PackedScene" uid="uid://b4703vet31mkh" path="res://assets/enemies/bin_enemy.blend" id="10_ktnja"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek1v0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -5830,6 +5831,9 @@ shape = SubResource("BoxShape3D_88fir")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Walls"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 49.137, 0, -116.998)
 shape = SubResource("BoxShape3D_oy2wh")
+
+[node name="bin_enemy" parent="." instance=ExtResource("10_ktnja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9281, 0.755157, -26.8447)
 
 [editable path="trash_can2/mesh"]
 [editable path="trash_can3/mesh"]
