@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://byh3rw06y5ads"]
+
+[ext_resource type="Script" path="res://scripts/trash_collider.gd" id="1_gm65c"]
+[ext_resource type="PackedScene" uid="uid://861nisn2rvcf" path="res://scenes/trash_collected_particle.tscn" id="2_ykewv"]
+[ext_resource type="PackedScene" uid="uid://c5kjjaq5ndmlw" path="res://assets/trash/plastic_bottle/source/plastic_bottl.fbx" id="3_luxbl"]
+[ext_resource type="Script" path="res://scripts/trash.gd" id="4_4shm0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tc0wq"]
+radius = 3.9695
+
+[node name="PlasticBottle" type="Node3D"]
+
+[node name="TrashCollider" type="Area3D" parent="." groups=["trash"]]
+transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0, 0, 0)
+script = ExtResource("1_gm65c")
+value = 3
+volume = 2
+
+[node name="PickupLabel" type="Label3D" parent="TrashCollider"]
+transform = Transform3D(4.87805, 0, 0, 0, 4.87805, 0, 0, 0, 4.87805, 0, 3.39444, 0)
+visible = false
+billboard = 1
+text = "E to pick up"
+
+[node name="SpaceFullLabel" type="Label3D" parent="TrashCollider"]
+transform = Transform3D(4.87805, 0, 0, 0, 4.87805, 0, 0, 0, 4.87805, 0, 3.39444, 0)
+visible = false
+billboard = 1
+text = "Space full!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrashCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71051, 0)
+shape = SubResource("SphereShape3D_tc0wq")
+
+[node name="TrashCollectedParticle" parent="TrashCollider" instance=ExtResource("2_ykewv")]
+
+[node name="mesh" parent="." node_paths=PackedStringArray("mesh_instance") instance=ExtResource("3_luxbl")]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)
+script = ExtResource("4_4shm0")
+mesh_instance = NodePath("Cylinder")
+
+[editable path="mesh"]

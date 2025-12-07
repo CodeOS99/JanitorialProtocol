@@ -1,4 +1,4 @@
-[gd_scene load_steps=232 format=4 uid="uid://nv6dpf3umyp3"]
+[gd_scene load_steps=233 format=4 uid="uid://nv6dpf3umyp3"]
 
 [ext_resource type="PackedScene" uid="uid://ce70gywp78csq" path="res://scenes/player.tscn" id="1_p4v0k"]
 [ext_resource type="PackedScene" uid="uid://byy21p2l3x8vi" path="res://scenes/trash_can.tscn" id="2_41rrt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ceji7ropqarku" path="res://assets/city/textures/cartelli.png" id="3_4v2lk"]
 [ext_resource type="Script" path="res://scripts/car.gd" id="4_qaee8"]
 [ext_resource type="PackedScene" uid="uid://ociau58dr0nn" path="res://scenes/paper.tscn" id="7_y83cb"]
+[ext_resource type="PackedScene" uid="uid://byh3rw06y5ads" path="res://scenes/plastic_bottle.tscn" id="8_6nt8o"]
 [ext_resource type="PackedScene" uid="uid://uh5pjfuye5dl" path="res://scenes/bin.tscn" id="8_eh5i4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek1v0"]
@@ -5779,3 +5780,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, -23)
 
 [node name="trash_can" parent="." instance=ExtResource("2_41rrt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, -24)
+
+[node name="PlasticBottle" parent="." instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.5854, -0.0365819, -24.2537)
