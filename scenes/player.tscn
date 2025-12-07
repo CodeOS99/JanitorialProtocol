@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce70gywp78csq"]
+[gd_scene load_steps=20 format=3 uid="uid://ce70gywp78csq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1p21k"]
 [ext_resource type="Texture2D" uid="uid://dyt0drlppf04t" path="res://assets/crosshair032.png" id="2_2wudv"]
 [ext_resource type="PackedScene" uid="uid://brdy61yxscp6" path="res://assets/garbage_bag/garbage_bag.blend" id="2_c2ysd"]
 [ext_resource type="Script" path="res://scripts/camera_3d.gd" id="3_xsukw"]
 [ext_resource type="Script" path="res://scripts/volume_progressbar.gd" id="4_3d40p"]
+[ext_resource type="PackedScene" uid="uid://c2us37pdk72ba" path="res://assets/broom/source/broom_01.fbx" id="4_wj68j"]
 [ext_resource type="Script" path="res://scripts/money_label.gd" id="5_8ewvs"]
+[ext_resource type="Texture2D" uid="uid://5afegq8dx52d" path="res://assets/broom/textures/LIT.png" id="5_l7hw4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0jc65"]
 height = 3.0
@@ -13,14 +15,84 @@ height = 3.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0fgxm"]
 height = 3.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2m8y"]
+albedo_texture = ExtResource("5_l7hw4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x42qc"]
+size = Vector3(0.574982, 2.52332, 0.506714)
+
 [sub_resource type="BoxMesh" id="BoxMesh_edy80"]
 size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_evndj"]
+size = Vector3(0.1, 0.1, 0.48)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrtg5"]
 bg_color = Color(0.442501, 9.3855e-07, 2.16588e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwnij"]
 bg_color = Color(1, 0.397701, 0.329255, 1)
+
+[sub_resource type="Animation" id="Animation_cgpr8"]
+resource_name = "use_broom"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/broom_01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.866667, 1.33333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.06465, 0, 0), Vector3(1.06465, 0, 0), Vector3(2.15035, 0, 0), Vector3(2.15035, 0, 0), Vector3(1.06465, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/broom_01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.866667, 1.33333, 1.5),
+"transitions": PackedFloat32Array(1, -2, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.745, -0.902, -1.6), Vector3(0.745, -1.557, -3.05), Vector3(0.745, 0.290735, -3.05), Vector3(0.745, 0.290735, -3.05), Vector3(0.745, -0.902, -1.6)]
+}
+
+[sub_resource type="Animation" id="Animation_4h17c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/broom_01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.06465, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/broom_01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.745, -0.902, -1.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bs4l6"]
+_data = {
+"RESET": SubResource("Animation_4h17c"),
+"use_broom": SubResource("Animation_cgpr8")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_1p21k")
@@ -45,9 +117,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14443, -0.493851)
 target_position = Vector3(0, 0, -3)
 collide_with_areas = true
 
-[node name="TrashPicker" type="MeshInstance3D" parent="Head"]
+[node name="broom_01" parent="Head" instance=ExtResource("4_wj68j")]
+transform = Transform3D(1, 0, 0, 0, 0.48481, -0.87462, 0, 0.87462, 0.48481, 0.745, -0.902, -1.6)
+
+[node name="broom_01" parent="Head/broom_01" index="0"]
+transform = Transform3D(2.68695, 0, 0, 0, -3.20309e-07, 2.68695, 0, -2.68695, -3.20309e-07, -0.44469, 0, 0)
+material_override = SubResource("StandardMaterial3D_a2m8y")
+
+[node name="Area3D" type="Area3D" parent="Head/broom_01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/broom_01/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42043, 1.18163, -0.173172)
+shape = SubResource("BoxShape3D_x42qc")
+
+[node name="TrashPicker2" type="Node3D" parent="Head"]
+
+[node name="body" type="MeshInstance3D" parent="Head/TrashPicker2"]
 transform = Transform3D(1, 0, 0, 0, 0.949425, 0.313992, 0, -0.313992, 0.949425, 0.42, -0.38, -0.73)
 mesh = SubResource("BoxMesh_edy80")
+skeleton = NodePath("../..")
+
+[node name="body2" type="MeshInstance3D" parent="Head/TrashPicker2"]
+transform = Transform3D(1, 0, 0, 0, 0.949425, 0.313992, 0, -0.313992, 0.949425, 0.42, -0.505, -1.39)
+mesh = SubResource("BoxMesh_evndj")
+skeleton = NodePath("../..")
+
+[node name="body3" type="MeshInstance3D" parent="Head/TrashPicker2"]
+transform = Transform3D(1, 0, 0, 0, 0.949425, 0.313992, 0, -0.313992, 0.949425, 0.42, -0.719627, -1.39)
+mesh = SubResource("BoxMesh_evndj")
+skeleton = NodePath("../..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -123,3 +221,13 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_vwnij")
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bs4l6")
+}
+
+[connection signal="body_entered" from="Head/broom_01/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="Head/broom_01"]

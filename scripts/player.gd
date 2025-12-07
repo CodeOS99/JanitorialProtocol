@@ -29,6 +29,8 @@ var health: int = MAX_HEALTH
 
 var kb_vel := Vector3.ZERO
 
+var is_attacking = false
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
@@ -49,7 +51,16 @@ func _process(delta: float) -> void:
 			last_hovered_body = null
 	
 	$CanvasLayer/Control/ProgressBar.value = health
-
+	
+	if Input.is_action_pressed("broom"):
+		$Head/broom_01.visible = true
+		$Head/TrashPicker2.visible = false
+	elif Input.is_action_pressed("trash_picker"):
+		$Head/broom_01.visible = false
+		$Head/TrashPicker2.visible = true
+	if Input.is_action_pressed("use_broom") and $Head/broom_01.visible:
+		is_attacking = true
+		$AnimationPlayer.play("use_broom")
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity* delta
@@ -88,7 +99,7 @@ func _physics_process(delta: float) -> void:
 	kb_vel = Vector3.ZERO
 	
 	var collided := false
-	if raycast.is_colliding():
+	if raycast.is_colliding() and $Head/TrashPicker2.visible:
 		var body = raycast.get_collider()
 		if body:
 			if body.is_in_group("trash") or body.is_in_group("bin"):
@@ -122,3 +133,11 @@ func take_damage(damage: int, take_kb: bool = false, pos: Vector3 = Vector3.ZERO
 		kb_vel += (global_position-pos) * KB_MAG
 	
 	$Head/Camera3D._camera_shake()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("enemy"):
+		body.take_damage()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "use_broom":
+		is_attacking = false
