@@ -5,7 +5,7 @@ const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.8
 const SENSITIVITY = .004
-const KB_MAG = 10 # kb magnitude
+const KB_MAG = 5 # kb magnitude
 
 # bob vars
 const BOB_FREQ = 2.4

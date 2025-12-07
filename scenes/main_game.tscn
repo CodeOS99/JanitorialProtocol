@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=4 uid="uid://nv6dpf3umyp3"]
+[gd_scene load_steps=236 format=4 uid="uid://nv6dpf3umyp3"]
 
 [ext_resource type="PackedScene" uid="uid://ce70gywp78csq" path="res://scenes/player.tscn" id="1_p4v0k"]
 [ext_resource type="PackedScene" uid="uid://byy21p2l3x8vi" path="res://scenes/trash_can.tscn" id="2_41rrt"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://uh5pjfuye5dl" path="res://scenes/bin.tscn" id="8_eh5i4"]
 [ext_resource type="Script" path="res://scripts/trash_spawner.gd" id="9_we6ux"]
 [ext_resource type="Script" path="res://scripts/thing_spawner.gd" id="10_ffnwh"]
+[ext_resource type="Script" path="res://scripts/bin_enemy_spawner.gd" id="11_74t4r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek1v0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -6000,3 +6001,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5038, -0.0365819, -104.71
 
 [node name="PlasticBottle52" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5038, -0.0365819, -104.714)
+
+[node name="bin_enemy_spawner" type="Node3D" parent="."]
+script = ExtResource("11_74t4r")
