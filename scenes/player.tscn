@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ce70gywp78csq"]
+[gd_scene load_steps=11 format=3 uid="uid://ce70gywp78csq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1p21k"]
 [ext_resource type="Texture2D" uid="uid://dyt0drlppf04t" path="res://assets/crosshair032.png" id="2_2wudv"]
@@ -15,7 +15,13 @@ height = 3.0
 [sub_resource type="BoxMesh" id="BoxMesh_edy80"]
 size = Vector3(0.1, 0.1, 1)
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrtg5"]
+bg_color = Color(0.442501, 9.3855e-07, 2.16588e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwnij"]
+bg_color = Color(1, 0.397701, 0.329255, 1)
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_1p21k")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -105,3 +111,13 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 25
 text = "Money: 0"
 script = ExtResource("5_8ewvs")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mrtg5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vwnij")
+step = 1.0
+value = 100.0
+show_percentage = false

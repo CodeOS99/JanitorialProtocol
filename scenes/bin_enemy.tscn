@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd60724ktrxmg"]
+[gd_scene load_steps=9 format=3 uid="uid://dd60724ktrxmg"]
 
 [ext_resource type="Script" path="res://scripts/follow_enemy.gd" id="1_rf3r8"]
 [ext_resource type="PackedScene" uid="uid://b4703vet31mkh" path="res://assets/enemies/bin_enemy.blend" id="2_mhek3"]
+[ext_resource type="Shader" path="res://scripts/shaders/outline_shader.gdshader" id="3_cudwg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sorti"]
+render_priority = 0
+shader = ExtResource("3_cudwg")
+shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_width = 4.035
 
 [sub_resource type="Animation" id="Animation_2uxwe"]
 resource_name = "walk"
@@ -113,22 +120,48 @@ _data = {
 "walk": SubResource("Animation_2uxwe")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xb1fh"]
+radius = 0.436101
+height = 1.76759
+
 [node name="bin_enemy" type="CharacterBody3D"]
 script = ExtResource("1_rf3r8")
 
 [node name="bin_enemy" parent="." instance=ExtResource("2_mhek3")]
 
+[node name="Cylinder_596" parent="bin_enemy" index="0"]
+material_overlay = SubResource("ShaderMaterial_sorti")
+
+[node name="Cube_1543" parent="bin_enemy" index="1"]
+material_overlay = SubResource("ShaderMaterial_sorti")
+
 [node name="LegLeft" parent="bin_enemy" index="2"]
 transform = Transform3D(0.1, 0, 0, 0, 0.367, 0, 0, 0, 0.117, 0.08, -0.356532, 0)
+material_overlay = SubResource("ShaderMaterial_sorti")
 
 [node name="LegRight" parent="bin_enemy" index="3"]
 transform = Transform3D(0.1, 0, 0, 0, 0.367, 0, 0, 0, 0.117, -0.142868, -0.356532, 0)
+material_overlay = SubResource("ShaderMaterial_sorti")
+
+[node name="Icosphere" parent="bin_enemy" index="4"]
+material_overlay = SubResource("ShaderMaterial_sorti")
+
+[node name="Icosphere_001" parent="bin_enemy" index="5"]
+material_overlay = SubResource("ShaderMaterial_sorti")
+
+[node name="EyebrowRight" parent="bin_enemy" index="6"]
+material_overlay = SubResource("ShaderMaterial_sorti")
+
+[node name="EyebrowLeft" parent="bin_enemy" index="7"]
+material_overlay = SubResource("ShaderMaterial_sorti")
 
 [node name="Cube" parent="bin_enemy" index="8"]
 transform = Transform3D(0.22, 0, 0, 0, -0.0551261, 0.359339, 0, -0.908329, -0.0218081, -0.46, 0.36, 0.22473)
+material_overlay = SubResource("ShaderMaterial_sorti")
 
 [node name="Cube_001" parent="bin_enemy" index="9"]
 transform = Transform3D(0.22, 0, 0, 0, 0.0710969, 0.3589, 0, -0.907218, 0.0281263, 0.422144, 0.36, 0.171926)
+material_overlay = SubResource("ShaderMaterial_sorti")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -139,5 +172,13 @@ speed_scale = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0330598, 0)
+shape = SubResource("CapsuleShape3D_xb1fh")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 
 [editable path="bin_enemy"]

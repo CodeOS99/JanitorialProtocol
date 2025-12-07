@@ -5,6 +5,8 @@ var first = true
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
+var damage: int = 10
+
 func _physics_process(delta: float) -> void:
 	if first:
 		await get_tree().process_frame
@@ -25,10 +27,16 @@ func _physics_process(delta: float) -> void:
 	velocity.x = dir.x * SPEED
 	velocity.z = dir.z * SPEED
 
-	# Gravity
-	#if not is_on_floor():
-		#velocity.y -= 9.8 * delta
-	look_at(Globals.player.global_position)
+	look_at_y(Globals.player.global_position)
 	rotation_degrees.y -= 180
 
 	move_and_slide()
+
+func look_at_y(target: Vector3):
+	var to_target = target - global_position
+	to_target.y = 0
+	look_at(global_position+to_target)
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		Globals.player.take_damage(damage, true, global_position)

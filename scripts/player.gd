@@ -5,6 +5,7 @@ const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.8
 const SENSITIVITY = .004
+const KB_MAG = 10 # kb magnitude
 
 # bob vars
 const BOB_FREQ = 2.4
@@ -19,9 +20,14 @@ var gravity = 9.8
 
 var last_hovered_body = null
 
+const MAX_HEALTH: int = 100
+var health: int = MAX_HEALTH
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var raycast = $Head/Camera3D/RayCast3D
+
+var kb_vel := Vector3.ZERO
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,6 +47,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("interact"):
 			last_hovered_body.interact()
 			last_hovered_body = null
+	
+	$CanvasLayer/Control/ProgressBar.value = health
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -74,7 +82,10 @@ func _physics_process(delta: float) -> void:
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
+	velocity += kb_vel
+	
 	move_and_slide()
+	kb_vel = Vector3.ZERO
 	
 	var collided := false
 	if raycast.is_colliding():
@@ -103,3 +114,8 @@ func _headbob(time) -> Vector3:
 func add_trash(value: int, volume: int):
 	Globals.curr_value += value
 	Globals.curr_volume += volume
+
+func take_damage(damage: int, take_kb: bool = false, pos: Vector3 = Vector3.ZERO):
+	self.health -= damage
+	if take_kb:
+		kb_vel += (global_position-pos) * KB_MAG
