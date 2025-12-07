@@ -24,6 +24,11 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 trash=""
 bin=""
 player=""
+enemy=""
+
+[gui]
+
+theme/custom_font="res://assets/PlaywriteNO-Regular.ttf"
 
 [input]
 
