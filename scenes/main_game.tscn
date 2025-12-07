@@ -1,4 +1,4 @@
-[gd_scene load_steps=233 format=4 uid="uid://nv6dpf3umyp3"]
+[gd_scene load_steps=235 format=4 uid="uid://nv6dpf3umyp3"]
 
 [ext_resource type="PackedScene" uid="uid://ce70gywp78csq" path="res://scenes/player.tscn" id="1_p4v0k"]
 [ext_resource type="PackedScene" uid="uid://byy21p2l3x8vi" path="res://scenes/trash_can.tscn" id="2_41rrt"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ociau58dr0nn" path="res://scenes/paper.tscn" id="7_y83cb"]
 [ext_resource type="PackedScene" uid="uid://byh3rw06y5ads" path="res://scenes/plastic_bottle.tscn" id="8_6nt8o"]
 [ext_resource type="PackedScene" uid="uid://uh5pjfuye5dl" path="res://scenes/bin.tscn" id="8_eh5i4"]
+[ext_resource type="Script" path="res://scripts/trash_spawner.gd" id="9_we6ux"]
+[ext_resource type="Script" path="res://scripts/thing_spawner.gd" id="10_ffnwh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ek1v0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -5781,5 +5783,166 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, -23)
 [node name="trash_can" parent="." instance=ExtResource("2_41rrt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 0, -24)
 
-[node name="PlasticBottle" parent="." instance=ExtResource("8_6nt8o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.5854, -0.0365819, -24.2537)
+[node name="TrashSpawner" type="Node3D" parent="."]
+script = ExtResource("9_we6ux")
+
+[node name="ThingSpawner" type="Node3D" parent="."]
+script = ExtResource("10_ffnwh")
+
+[node name="PlasticBottles" type="Node3D" parent="."]
+
+[node name="PlasticBottle1" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.5854, -0.0365819, -47.5233)
+
+[node name="PlasticBottle2" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.6203, -0.0365819, -61.5518)
+
+[node name="PlasticBottle3" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6841, -0.0365819, -61.5518)
+
+[node name="PlasticBottle4" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6841, -0.0365819, -85.8824)
+
+[node name="PlasticBottle5" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6841, -0.0365819, -85.8824)
+
+[node name="PlasticBottle6" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6104, -0.0365819, -66.0043)
+
+[node name="PlasticBottle7" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.36916, -0.0365819, -51.7591)
+
+[node name="PlasticBottle8" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68738, -0.0365819, -38.0669)
+
+[node name="PlasticBottle9" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4471, -0.0365819, -76.1483)
+
+[node name="PlasticBottle10" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.6794, -0.0365819, -93.0279)
+
+[node name="PlasticBottle11" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.168, -0.0365819, -93.0279)
+
+[node name="PlasticBottle12" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.168, -0.0365819, -66.7754)
+
+[node name="PlasticBottle13" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.456, -0.0365819, -61.831)
+
+[node name="PlasticBottle14" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.456, -0.0365819, -11.4365)
+
+[node name="PlasticBottle15" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.385, -0.0365819, -8.92242)
+
+[node name="PlasticBottle16" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.385, -0.0365819, -22.4631)
+
+[node name="PlasticBottle17" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.902, -0.0365819, -13.8917)
+
+[node name="PlasticBottle18" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.902, -0.0365819, -13.8917)
+
+[node name="PlasticBottle19" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.757, -0.0365819, -28.8198)
+
+[node name="PlasticBottle20" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.078, -0.0365819, -37.3109)
+
+[node name="PlasticBottle21" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.078, -0.0365819, 17.7465)
+
+[node name="PlasticBottle22" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.301, -0.0365819, 17.7465)
+
+[node name="PlasticBottle23" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.301, -0.0365819, 32.5679)
+
+[node name="PlasticBottle24" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.09, -0.0365819, 32.5679)
+
+[node name="PlasticBottle25" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.715, -0.0365819, 32.5679)
+
+[node name="PlasticBottle26" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.3658, -0.0365819, 16.2951)
+
+[node name="PlasticBottle27" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.9615, -0.0365819, 10.8457)
+
+[node name="PlasticBottle28" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.522, -0.0365819, 4.87854)
+
+[node name="PlasticBottle29" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.9341, -0.0365819, 4.87854)
+
+[node name="PlasticBottle30" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.6618, -0.0365819, -88.4289)
+
+[node name="PlasticBottle31" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.1128, -0.0365819, -94.9922)
+
+[node name="PlasticBottle32" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.084, -0.0365819, -110.979)
+
+[node name="PlasticBottle33" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.535, -0.0365819, -93.257)
+
+[node name="PlasticBottle34" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.535, -0.0365819, -62.718)
+
+[node name="PlasticBottle35" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.182, -0.0365819, -62.718)
+
+[node name="PlasticBottle36" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.638, -0.0365819, -62.718)
+
+[node name="PlasticBottle37" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73011, -0.0365819, -95.0608)
+
+[node name="PlasticBottle38" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73011, -0.0365819, -40.9102)
+
+[node name="PlasticBottle39" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15824, -0.0365819, 12.6591)
+
+[node name="PlasticBottle40" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4022, -0.0365819, 15.932)
+
+[node name="PlasticBottle41" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5582, -0.0365819, 12.0814)
+
+[node name="PlasticBottle42" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7876, -0.0365819, -27.3693)
+
+[node name="PlasticBottle43" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7876, -0.0365819, -13.2384)
+
+[node name="PlasticBottle44" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1321, -0.0365819, -13.2384)
+
+[node name="PlasticBottle45" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.9196, -0.0365819, -19.9972)
+
+[node name="PlasticBottle46" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.3253, -0.0365819, -7.04203)
+
+[node name="PlasticBottle47" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.8617, -0.0365819, 7.69825)
+
+[node name="PlasticBottle48" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.2542, -0.0365819, -67.1836)
+
+[node name="PlasticBottle49" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3408, -0.0365819, -61.9732)
+
+[node name="PlasticBottle50" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3408, -0.0365819, -92.2528)
+
+[node name="PlasticBottle51" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5038, -0.0365819, -104.714)
+
+[node name="PlasticBottle52" parent="PlasticBottles" instance=ExtResource("8_6nt8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5038, -0.0365819, -104.714)
