@@ -3617,6 +3617,60 @@ shape = SubResource("ConvexPolygonShape3D_6t3to")
 [node name="bin" parent="." instance=ExtResource("8_eh5i4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.6818, -0.288704, -23.5702)
 
+[node name="bin2" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.6818, -0.288704, -54.3462)
+
+[node name="bin3" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.5183, -0.288704, -95.6928)
+
+[node name="bin4" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.043, -0.288704, -109.074)
+
+[node name="bin5" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.854, -0.288704, -86.7246)
+
+[node name="bin6" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156.854, -0.288704, -53.5468)
+
+[node name="bin7" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.645, -0.288704, -53.5468)
+
+[node name="bin8" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 143.47, -0.288704, -5.73573)
+
+[node name="bin9" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.757, -0.288704, 32.1589)
+
+[node name="bin10" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.958, -0.288704, 34.8416)
+
+[node name="bin11" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.1203, -0.288704, 12.9781)
+
+[node name="bin12" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.1203, -0.288704, -21.1471)
+
+[node name="bin13" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.4075, -0.288704, 11.8875)
+
+[node name="bin14" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6492, -0.288704, -6.50382)
+
+[node name="bin15" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3318, -0.288704, 22.9868)
+
+[node name="bin16" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9348, -0.288704, 7.20677)
+
+[node name="bin17" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9348, -0.288704, -68.1522)
+
+[node name="bin18" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9348, -0.288704, -95.8655)
+
+[node name="bin19" parent="." instance=ExtResource("8_eh5i4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9894, -0.288704, -95.8655)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_bnkl1")
 
