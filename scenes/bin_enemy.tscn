@@ -121,7 +121,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xb1fh"]
-radius = 0.436101
+radius = 0.643058
 height = 1.76759
 
 [node name="bin_enemy" type="CharacterBody3D"]

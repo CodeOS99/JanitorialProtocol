@@ -93,7 +93,8 @@ func _physics_process(delta: float) -> void:
 		if body:
 			if body.is_in_group("trash") or body.is_in_group("bin"):
 				if last_hovered_body:
-					last_hovered_body.hovered_exit()
+					if is_instance_valid(last_hovered_body):
+						last_hovered_body.hovered_exit()
 				last_hovered_body = body
 				collided = true
 	
@@ -119,3 +120,5 @@ func take_damage(damage: int, take_kb: bool = false, pos: Vector3 = Vector3.ZERO
 	self.health -= damage
 	if take_kb:
 		kb_vel += (global_position-pos) * KB_MAG
+	
+	$Head/Camera3D._camera_shake()

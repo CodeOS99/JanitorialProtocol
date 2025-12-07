@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce70gywp78csq"]
+[gd_scene load_steps=12 format=3 uid="uid://ce70gywp78csq"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1p21k"]
 [ext_resource type="Texture2D" uid="uid://dyt0drlppf04t" path="res://assets/crosshair032.png" id="2_2wudv"]
 [ext_resource type="PackedScene" uid="uid://brdy61yxscp6" path="res://assets/garbage_bag/garbage_bag.blend" id="2_c2ysd"]
+[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="3_xsukw"]
 [ext_resource type="Script" path="res://scripts/volume_progressbar.gd" id="4_3d40p"]
 [ext_resource type="Script" path="res://scripts/money_label.gd" id="5_8ewvs"]
 
@@ -37,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902018, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973, -0.757, -1.125)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+script = ExtResource("3_xsukw")
 
 [node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14443, -0.493851)

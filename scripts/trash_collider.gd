@@ -6,9 +6,11 @@ extends Area3D
 var can_queue_free := false
 
 func hovered_over() -> bool:
-	if Globals.curr_volume + volume > Globals.max_volume or can_queue_free:
+	if Globals.curr_volume + volume > Globals.max_volume:
 		$"SpaceFullLabel".visible = true
 		$"PickupLabel".visible = false
+		return false
+	if can_queue_free:
 		return false
 	$"SpaceFullLabel".visible = false
 	$"PickupLabel".visible = true
@@ -29,6 +31,8 @@ func interact():
 	$"../mesh".queue_free()
 	can_queue_free = true
 	$TrashCollectedParticle.emitting = true
+	$PickupLabel.visible = false
+	$SpaceFullLabel.visible = false
 
 func _process(delta: float) -> void:
 	if can_queue_free and not $TrashCollectedParticle.emitting:
